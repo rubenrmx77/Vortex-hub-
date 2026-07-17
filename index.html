@@ -396,7 +396,7 @@ Entretenimiento digital premium
 
 <div class="card">
 <h3>Flujo Completa</h3>
-<p class="precio">$115</p>
+<p class="precio">$70</p>
 <a class="btn" href="https://wa.me/529841157507">Comprar</a>
 </div>
 
@@ -458,17 +458,31 @@ Entretenimiento digital premium
 <section id="admin" class="container">
 
 <h2 class="titulo">
-🔐 Administración
-</h2>
+🔐 
+<!-- Acceso administrador oculto -->
+<a href="#" onclick="abrirAdmin()" style="color:#111;text-decoration:none;">
+⚙️
+</a>
 
-<div class="card">
+<script>
+function abrirAdmin(){
 
-<p>Usuario:</p>
-<b>Admin</b>
+let usuario = prompt("Usuario administrador:");
 
-<p>Contraseña:</p>
-<b>Vortex2026#</b>
+let password = prompt("Contraseña:");
 
+if(usuario=="Admin" && password=="Vortex2026#"){
+
+alert("Acceso administrador correcto");
+
+}else{
+
+alert("Datos incorrectos");
+
+}
+
+}
+</script>
 <p>
 Panel preparado para futuras mejoras.
 </p>
