@@ -1,837 +1,641 @@
-<!DOCTYPE html>  <html lang="es">  
-<head>  
-  <meta charset="UTF-8" />  
-  <title>Vortex Hub Pro | Tu Centro de Servicios Digitales</title>  
-  <meta name="viewport" content="width=device-width, initial-scale=1" />  
-  <meta name="description" content="Acceso a las mejores plataformas digitales en un solo lugar: Streaming, Música, IA, VPN. Activación rápida, soporte por WhatsApp y atención personalizada." />  
-  <meta name="keywords" content="servicios digitales, streaming, música, IA, VPN, Netflix, Spotify, ChatGPT, NordVPN" />  
-  <meta name="robots" content="index, follow" />    <link rel="preconnect" href="https://fonts.googleapis.com" />  
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />    <style>  
-    :root {  
-      --bg: #0f172a;  
-      --bg-card: #131c33;  
-      --bg-card-hover: #16213e;  
-      --text: #e6edf7;  
-      --text-muted: #94a3b8;  
-      --primary: #3b82f6; /* azul eléctrico */  
-      --primary-dark: #2563eb;  
-      --secondary: #a855f7; /* morado */  
-      --accent: #22c55e; /* verde */  
-      --border: #1e293b;  
-      --shadow: 0 10px 30px rgba(0,0,0,0.35);  
-      --radius: 14px;  
-      --radius-sm: 10px;  
-    }  
-  
-    * {  
-      box-sizing: border-box;  
-      margin: 0;  
-      padding: 0;  
-    }  
-  
-    html, body {  
-      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;  
-      background: var(--bg);  
-      color: var(--text);  
-      line-height: 1.5;  
-      overflow-x: hidden;  
-    }  
-  
-    a {  
-      color: inherit;  
-      text-decoration: none;  
-    }  
-  
-    img {  
-      max-width: 100%;  
-      display: block;  
-    }  
-  
-    /* ========== Header ========== */  
-    .header {  
-      position: sticky;  
-      top: 0;  
-      z-index: 50;  
-      background: rgba(15, 23, 42, 0.85);  
-      backdrop-filter: blur(10px);  
-      border-bottom: 1px solid var(--border);  
-    }  
-  
-    .header-inner {  
-      display: flex;  
-      align-items: center;  
-      justify-content: space-between;  
-      padding: 14px 20px;  
-      max-width: 1200px;  
-      margin: 0 auto;  
-    }  
-  
-    .logo {  
-      display: flex;  
-      align-items: center;  
-      gap: 12px;  
-      font-weight: 800;  
-      font-size: 1.25rem;  
-      letter-spacing: 0.4px;  
-      color: var(--text);  
-    }  
-  
-    .logo-mark {  
-      width: 36px;  
-      height: 36px;  
-      border-radius: 10px;  
-      background: linear-gradient(135deg, var(--primary), var(--secondary));  
-      display: grid;  
-      place-items: center;  
-      font-weight: 700;  
-      font-size: 0.9rem;  
-      color: #fff;  
-      box-shadow: 0 8px 20px rgba(59,130,246,0.35);  
-    }  
-  
-    .nav {  
-      display: flex;  
-      align-items: center;  
-      gap: 8px;  
-    }  
-  
-    .nav a {  
-      padding: 8px 12px;  
-      font-size: 0.9rem;  
-      color: var(--text-muted);  
-      border-radius: 8px;  
-      transition: color 0.2s ease, background 0.2s ease;  
-    }  
-  
-    .nav a:hover {  
-      color: var(--text);  
-      background: rgba(30, 41, 59, 0.6);  
-    }  
-  
-    .btn {  
-      display: inline-flex;  
-      align-items: center;  
-      justify-content: center;  
-      gap: 8px;  
-      padding: 10px 16px;  
-      border-radius: 10px;  
-      font-weight: 600;  
-      font-size: 0.9rem;  
-      cursor: pointer;  
-      border: none;  
-      transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;  
-    }  
-  
-    .btn-primary {  
-      background: linear-gradient(135deg, var(--primary), var(--secondary));  
-      color: #fff;  
-      box-shadow: 0 10px 25px rgba(59,130,246,0.35);  
-    }  
-  
-    .btn-primary:hover {  
-      transform: translateY(-1px);  
-      box-shadow: 0 14px 30px rgba(59,130,246,0.45);  
-    }  
-  
-    .btn-outline {  
-      background: transparent;  
-      border: 1px solid var(--border);  
-      color: var(--text);  
-    }  
-  
-    .btn-outline:hover {  
-      background: rgba(30, 41, 59, 0.6);  
-    }  
-  
-    .btn-sm {  
-      padding: 7px 12px;  
-      font-size: 0.82rem;  
-    }  
-  
-    .header-actions {  
-      display: flex;  
-      align-items: center;  
-      gap: 10px;  
-    }  
-  
-    .menu-toggle {  
-      display: none;  
-      width: 36px;  
-      height: 36px;  
-      border-radius: 8px;  
-      border: 1px solid var(--border);  
-      background: transparent;  
-      color: var(--text);  
-      cursor: pointer;  
-    }  
-  
-    /* ========== Hero ========== */  
-    .hero {  
-      position: relative;  
-      padding: 60px 20px 80px;  
-      max-width: 1200px;  
-      margin: 0 auto;  
-      display: grid;  
-      grid-template-columns: 1.1fr 0.9fr;  
-      gap: 40px;  
-      align-items: center;  
-    }  
-  
-    .hero-content h1 {  
-      font-size: 2.2rem;  
-      line-height: 1.15;  
-      font-weight: 800;  
-      margin-bottom: 12px;  
-      letter-spacing: 0.2px;  
-    }  
-  
-    .hero-content h1 span {  
-      color: var(--primary);  
-    }  
-  
-    .hero-content p {  
-      font-size: 1.05rem;  
-      color: var(--text-muted);  
-      margin-bottom: 22px;  
-      max-width: 520px;  
-    }  
-  
-    .hero-buttons {  
-      display: flex;  
-      align-items: center;  
-      gap: 12px;  
-    }  
-  
-    .hero-image {  
-      position: relative;  
-    }  
-  
-    .hero-image .card {  
-      width: 100%;  
-      aspect-ratio: 16 / 10;  
-      border-radius: var(--radius);  
-      background: linear-gradient(135deg, #0b1224, #111a33);  
-      border: 1px solid var(--border);  
-      box-shadow: var(--shadow);  
-      display: grid;  
-      place-items: center;  
-      overflow: hidden;  
-      position: relative;  
-    }  
-  
-    .hero-image .card::before {  
-      content: "";  
-      position: absolute;  
-      inset: -20%;  
-      background:  
-        radial-gradient(40% 60% at 20% 30%, rgba(59,130,246,0.15), transparent 60%),  
-        radial-gradient(40% 60% at 80% 70%, rgba(168,85,247,0.15), transparent 60%);  
-      filter: blur(20px);  
-    }  
-  
-    .hero-image .card-inner {  
-      font-weight: 700;  
-      font-size: 1.6rem;  
-      color: #fff;  
-      text-align: center;  
-      padding: 20px;  
-      z-index: 2;  
-    }  
-  
-    /* ========== Search & Filter ========== */  
-    .search-section {  
-      padding: 10px 20px 30px;  
-      max-width: 1200px;  
-      margin: 0 auto;  
-    }  
-  
-    .search-bar {  
-      display: grid;  
-      grid-template-columns: 1.6fr 0.8fr 1fr;  
-      gap: 12px;  
-      align-items: center;  
-      background: var(--bg-card);  
-      border: 1px solid var(--border);  
-      padding: 12px;  
-      border-radius: var(--radius);  
-      box-shadow: var(--shadow);  
-    }  
-  
-    .search-input {  
-      width: 100%;  
-      padding: 12px 14px;  
-      background: #0b1224;  
-      border: 1px solid var(--border);  
-      border-radius: var(--radius-sm);  
-      color: var(--text);  
-      font-size: 0.95rem;  
-    }  
-  
-    .search-input:focus {  
-      outline: none;  
-      border-color: var(--primary);  
-      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);  
-    }  
-  
-    .select {  
-      width: 100%;  
-      padding: 12px 14px;  
-      background: #0b1224;  
-      border: 1px solid var(--border);  
-      border-radius: var(--radius-sm);  
-      color: var(--text);  
-      font-size: 0.95rem;  
-      cursor: pointer;  
-    }  
-  
-    .search-actions {  
-      display: flex;  
-      gap: 8px;  
-    }  
-  
-    /* ========== Categories & Services ========== */  
-    .main {  
-      padding: 20px 20px 60px;  
-      max-width: 1200px;  
-      margin: 0 auto;  
-    }  
-  
-    .section-title {  
-      font-size: 1.3rem;  
-      font-weight: 700;  
-      margin-bottom: 16px;  
-      display: flex;  
-      align-items: center;  
-      gap: 10px;  
-    }  
-  
-    .section-title .mark {  
-      width: 10px;  
-      height: 10px;  
-      border-radius: 3px;  
-      background: linear-gradient(135deg, var(--primary), var(--secondary));  
-    }  
-  
-    .category {  
-      margin-bottom: 40px;  
-    }  
-  
-    .category-header {  
-      display: flex;  
-      align-items: center;  
-      gap: 10px;  
-      margin-bottom: 14px;  
-    }  
-  
-    .category-icon {  
-      width: 28px;  
-      height: 28px;  
-      border-radius: 8px;  
-      display: grid;  
-      place-items: center;  
-      font-weight: 700;  
-      font-size: 0.8rem;  
-      color: #fff;  
-    }  
-  
-    .cat-streaming .category-icon {  
-      background: linear-gradient(135deg, #e50914, #ff6b6b);  
-    }  
-  
-    .cat-music .category-icon {  
-      background: linear-gradient(135deg, #1db954, #22c55e);  
-    }  
-  
-    .cat-ai .category-icon {  
-      background: linear-gradient(135deg, var(--primary), var(--secondary));  
-    }  
-  
-    .cat-vpn .category-icon {  
-      background: linear-gradient(135deg, #0ea5e9, #22d3ee);  
-    }  
-  
-    .services-grid {  
-      display: grid;  
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));  
-      gap: 14px;  
-    }  
-  
-    .service-card {  
-      background: var(--bg-card);  
-      border: 1px solid var(--border);  
-      border-radius: var(--radius);  
-      padding: 14px;  
-      position: relative;  
-      transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;  
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);  
-    }  
-  
-    .service-card:hover {  
-      transform: translateY(-3px);  
-      background: var(--bg-card-hover);  
-      box-shadow: 0 12px 28px rgba(0,0,0,0.35);  
-    }  
-  
-    .service-top {  
-      display: flex;  
-      align-items: center;  
-      gap: 12px;  
-      margin-bottom: 10px;  
-    }  
-  
-    .service-logo {  
-      width: 44px;  
-      height: 44px;  
-      border-radius: 10px;  
-      background: #0b1224;  
-      border: 1px solid var(--border);  
-      display: grid;  
-      place-items: center;  
-      font-weight: 700;  
-      font-size: 0.75rem;  
-      color: var(--text-muted);  
-    }  
-  
-    .service-title {  
-      font-weight: 700;  
-      font-size: 0.95rem;  
-    }  
-  
-    .service-desc {  
-      font-size: 0.85rem;  
-      color: var(--text-muted);  
-      margin-bottom: 12px;  
-      line-height: 1.4;  
-    }  
-  
-    .service-price {  
-      font-weight: 700;  
-      font-size: 1rem;  
-      margin-bottom: 12px;  
-    }  
-  
-    .service-price .old {  
-      font-weight: 500;  
-      color: var(--text-muted);  
-      font-size: 0.85rem;  
-      margin-left: 6px;  
-      text-decoration: line-through;  
-    }  
-  
-    .service-actions {  
-      display: flex;  
-      align-items: center;  
-      gap: 8px;  
-    }  
-  
-    .offer-badge {  
-      position: absolute;  
-      top: 10px;  
-      right: 10px;  
-      padding: 4px 8px;  
-      border-radius: 6px;  
-      font-size: 0.72rem;  
-      font-weight: 700;  
-      background: linear-gradient(135deg, var(--accent), #16a34a);  
-      color: #fff;  
-      box-shadow: 0 6px 16px rgba(34,197,94,0.35);  
-    }  
-  
-    /* ========== Benefits ========== */  
-    .benefits {  
-      padding: 40px 20px 60px;  
-      max-width: 1200px;  
-      margin: 0 auto;  
-    }  
-  
-    .benefits-grid {  
-      display: grid;  
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));  
-      gap: 14px;  
-    }  
-  
-    .benefit-card {  
-      background: var(--bg-card);  
-      border: 1px solid var(--border);  
-      border-radius: var(--radius);  
-      padding: 16px;  
-      display: flex;  
-      align-items: flex-start;  
-      gap: 12px;  
-      transition: transform 0.15s ease, background 0.2s ease;  
-    }  
-  
-    .benefit-card:hover {  
-      transform: translateY(-3px);  
-      background: var(--bg-card-hover);  
-    }  
-  
-    .benefit-icon {  
-      width: 36px;  
-      height: 36px;  
-      border-radius: 10px;  
-      display: grid;  
-      place-items: center;  
-      font-weight: 700;  
-      font-size: 0.8rem;  
-      color: #fff;  
-    }  
-  
-    .benefit-streaming .benefit-icon {  
-      background: linear-gradient(135deg, var(--primary), var(--secondary));  
-    }  
-  
-    .benefit-music .benefit-icon {  
-      background: linear-gradient(135deg, var(--accent), #16a34a);  
-    }  
-  
-    .benefit-ai .benefit-icon {  
-      background: linear-gradient(135deg, #f59e0b, #fbbf24);  
-    }  
-  
-    .benefit-vpn .benefit-icon {  
-      background: linear-gradient(135deg, #06b6d4, #22d3ee);  
-    }  
-  
-    .benefit-title {  
-      font-weight: 700;  
-      font-size: 0.95rem;  
-      margin-bottom: 4px;  
-    }  
-  
-    .benefit-desc {  
-      font-size: 0.85rem;  
-      color: var(--text-muted);  
-      line-height: 1.4;  
-    }  
-  
-    /* ========== FAQ ========== */  
-    .faq {  
-      padding: 40px 20px 60px;  
-      max-width: 1200px;  
-      margin: 0 auto;  
-    }  
-  
-    .faq-list {  
-      display: grid;  
-      grid-template-columns: 1fr;  
-      gap: 10px;  
-    }  
-  
-    .faq-item {  
-      background: var(--bg-card);  
-      border: 1px solid var(--border);  
-      border-radius: var(--radius-sm);  
-    }  
-  
-    .faq-question {  
-      display: flex;  
-      align-items: center;  
-      justify-content: space-between;  
-      padding: 14px 16px;  
-      cursor: pointer;  
-      font-weight: 600;  
-      font-size: 0.95rem;  
-    }  
-  
-    .faq-question:hover {  
-      background: rgba(30, 41, 59, 0.5);  
-    }  
-  
-    .faq-answer {  
-      padding: 0 16px 14px;  
-      font-size: 0.9rem;  
-      color: var(--text-muted);  
-      display: none;  
-    }  
-  
-    .faq-item.open .faq-answer {  
-      display: block;  
-    }  
-  
-    .faq-icon {  
-      width: 18px;  
-      height: 18px;  
-      border-radius: 4px;  
-      background: var(--border);  
-      display: grid;  
-      place-items: center;  
-      font-size: 0.7rem;  
-      color: var(--text-muted);  
-      transition: transform 0.2s ease;  
-    }  
-  
-    .faq-item.open .faq-icon {  
-      transform: rotate(45deg);  
-      background: var(--primary);  
-      color: #fff;  
-    }  
-  
-    /* ========== Footer ========== */  
-    .footer {  
-      border-top: 1px solid var(--border);  
-      background: rgba(13, 19, 36, 0.9);  
-      padding: 30px 20px 40px;  
-    }  
-  
-    .footer-inner {  
-      max-width: 1200px;  
-      margin: 0 auto;  
-      display: grid;  
-      grid-template-columns: 1.2fr 0.8fr;  
-      gap: 30px;  
-    }  
-  
-    .footer-brand h3 {  
-      font-weight: 800;  
-      font-size: 1.05rem;  
-      margin-bottom: 8px;  
-    }  
-  
-    .footer-brand p {  
-      font-size: 0.9rem;  
-      color: var(--text-muted);  
-      margin-bottom: 12px;  
-    }  
-  
-    .footer-links {  
-      display: grid;  
-      grid-template-columns: repeat(3, 1fr);  
-      gap: 10px;  
-    }  
-  
-    .footer-links a {  
-      font-size: 0.88rem;  
-      color: var(--text-muted);  
-      padding: 4px 0;  
-    }  
-  
-    .footer-links a:hover {  
-      color: var(--text);  
-    }  
-  
-    .footer-bottom {  
-      max-width: 1200px;  
-      margin: 20px auto 0;  
-      padding-top: 14px;  
-      border-top: 1px solid var(--border);  
-      display: flex;  
-      align-items: center;  
-      justify-content: space-between;  
-      font-size: 0.82rem;  
-      color: var(--text-muted);  
-    }  
-  
-    /* ========== Floating WhatsApp ========== */  
-    .float-wa {  
-      position: fixed;  
-      bottom: 20px;  
-      right: 20px;  
-      z-index: 60;  
-    }  
-  
-    .float-wa .btn {  
-      background: linear-gradient(135deg, #22c55e, #16a34a);  
-      color: #fff;  
-      padding: 12px 16px;  
-      border-radius: 14px;  
-      box-shadow: 0 10px 30px rgba(34,197,94,0.4);  
-    }  
-  
-    /* ========== Admin Panel (Frontend Only) ========== */  
-    .admin-toggle {  
-      position: fixed;  
-      bottom: 20px;  
-      left: 20px;  
-      z-index: 59;  
-    }  
-  
-    .admin-toggle .btn {  
-      background: rgba(30, 41, 59, 0.9);  
-      border: 1px solid var(--border);  
-      color: var(--text);  
-      padding: 10px 14px;  
-      border-radius: 12px;  
-      font-size: 0.82rem;  
-    }  
-  
-    .admin-panel {  
-      position: fixed;  
-      inset: 0 0 0 auto;  
-      width: 360px;  
-      background: #0b1224;  
-      border-left: 1px solid var(--border);  
-      transform: translateX(100%);  
-      transition: transform 0.25s ease;  
-      z-index: 70;  
-      display: flex;  
-      flex-direction: column;  
-    }  
-  
-    .admin-panel.open {  
-      transform: translateX(0);  
-    }  
-  
-    .admin-header {  
-      padding: 14px 16px;  
-      border-bottom: 1px solid var(--border);  
-      display: flex;  
-      align-items: center;  
-      justify-content: space-between;  
-    }  
-  
-    .admin-title {  
-      font-weight: 700;  
-      font-size: 0.95rem;  
-    }  
-  
-    .admin-close {  
-      width: 32px;  
-      height: 32px;  
-      border-radius: 8px;  
-      border: 1px solid var(--border);  
-      background: transparent;  
-      color: var(--text);  
-      cursor: pointer;  
-      font-size: 0.8rem;  
-    }  
-  
-    .admin-body {  
-      padding: 14px;  
-      overflow: auto;  
-      display: flex;  
-      flex-direction: column;  
-      gap: 14px;  
-    }  
-  
-    .admin-section-title {  
-      font-weight: 700;  
-      font-size: 0.85rem;  
-      color: var(--text-muted);  
-      margin-bottom: 6px;  
-    }  
-  
-    .admin-form {  
-      display: grid;  
-      grid-template-columns: 1fr 1fr;  
-      gap: 10px;  
-    }  
-  
-    .admin-form input,  
-    .admin-form select {  
-      width: 100%;  
-      padding: 10px 12px;  
-      background: #0f172a;  
-      border: 1px solid var(--border);  
-      border-radius: 8px;  
-      color: var(--text);  
-      font-size: 0.85rem;  
-    }  
-  
-    .admin-form label {  
-      font-size: 0.82rem;  
-      color: var(--text-muted);  
-      margin-bottom: 4px;  
-    }  
-  
-    .admin-full {  
-      grid-column: 1 / -1;  
-    }  
-  
-    .stats {  
-      display: grid;  
-      grid-template-columns: 1fr 1fr;  
-      gap: 10px;  
-    }  
-  
-    .stat-card {  
-      background: var(--bg-card);  
-      border: 1px solid var(--border);  
-      border-radius: 10px;  
-      padding: 12px;  
-    }  
-  
-    .stat-value {  
-      font-weight: 700;  
-      font-size: 1.1rem;  
-      margin-top: 4px;  
-    }  
-  
-    .stat-label {  
-      font-size: 0.78rem;  
-      color: var(--text-muted);  
-    }  
-  
-    .services-list {  
-      display: grid;  
-      gap: 8px;  
-    }  
-  
-    .service-row {  
-      display: grid;  
-      grid-template-columns: 1.2fr 0.8fr 0.8fr 0.6fr;  
-      gap: 6px;  
-      background: var(--bg-card);  
-      border: 1px solid var(--border);  
-      border-radius: 8px;  
-      padding: 8px;  
-    }  
-  
-    .service-row .name {  
-      font-weight: 600;  
-      font-size: 0.85rem;  
-    }  
-  
-    .service-row .price,  
-    .service-row .category {  
-      font-size: 0.82rem;  
-      color: var(--text-muted);  
-    }  
-  
-    .service-row .actions {  
-      display: flex;  
-      gap: 4px;  
-    }  
-  
-    .service-row .btn-sm {  
-      padding: 4px 8px;  
-      font-size: 0.75rem;  
-    }  
-  
-    /* ========== Responsive ========== */  
-    @media (max-width: 900px) {  
-      .hero {  
-        grid-template-columns: 1fr;  
-        gap: 24px;  
-        padding: 40px 20px 60px;  
-      }  
-  
-      .search-bar {  
-        grid-template-columns: 1fr;  
-      }  
-  
-      .footer-inner {  
-        grid-template-columns: 1fr;  
-      }  
-    }  
-  
-    @media (max-width: 720px) {  
-      .nav {  
-        position: fixed;  
-        top: 0;  
-        right: 0;  
-        bottom: 0;  
-        width: 260px;  
-        background: #0b1224;  
-        border-left: 1px solid var(--border);  
-        padding: 60px 16px 20px;  
-        display: flex;  
-        flex-direction: column;  
-        gap: 8px;  
-        transform: translateX(100%);  
-        transition: transform 0.25s ease;  
-      }  
-  
-      .nav.open {  
-        tr
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vortex Hub Pro</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+margin:0;
+background:#050505;
+color:white;
+}
+
+header{
+padding:40px 20px;
+text-align:center;
+background:linear-gradient(135deg,#00111f,#003b5c,#000);
+}
+
+.logo{
+font-size:45px;
+font-weight:900;
+color:#00eaff;
+text-shadow:0 0 20px #00eaff;
+}
+
+header p{
+font-size:18px;
+color:#ddd;
+}
+
+.menu{
+background:#111;
+padding:15px;
+text-align:center;
+position:sticky;
+top:0;
+z-index:10;
+}
+
+.menu a{
+color:white;
+margin:10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.container{
+padding:20px;
+}
+
+.titulo{
+text-align:center;
+color:#00eaff;
+font-size:30px;
+margin:30px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
+.card{
+background:#111;
+border:1px solid #00eaff55;
+border-radius:20px;
+padding:20px;
+text-align:center;
+box-shadow:0 0 20px #00eaff22;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card h3{
+color:#00eaff;
+font-size:22px;
+}
+
+.precio{
+font-size:32px;
+font-weight:bold;
+color:#00ff88;
+margin:15px;
+}
+
+.btn{
+display:inline-block;
+background:#00eaff;
+color:#000;
+padding:12px 25px;
+border-radius:30px;
+text-decoration:none;
+font-weight:bold;
+}
+
+.whatsapp{
+position:fixed;
+right:20px;
+bottom:20px;
+width:65px;
+height:65px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+z-index:100;
+text-decoration:none;
+box-shadow:0 0 20px #25D366;
+}
+
+.clientes{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.opinion{
+background:#111;
+padding:20px;
+border-radius:15px;
+border:1px solid #333;
+}
+
+.estrellas{
+color:#ffd700;
+font-size:22px;
+}
+
+footer{
+background:#000;
+padding:30px;
+text-align:center;
+color:#aaa;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+
+<div class="logo">
+⚡ VORTEX HUB PRO
+</div>
+
+<p>
+Tu plataforma premium de entretenimiento digital
+</p>
+
+<p>
+📧 alartelsistemasproyecta@gmail.com
+</p>
+
+</header>
+
+
+<div class="menu">
+
+<a href="#servicios">Servicios</a>
+<a href="#clientes">Clientes</a>
+<a href="#contacto">Contacto</a>
+
+</div>
+
+
+<div class="container" id="servicios">
+
+
+<h2 class="titulo">
+🔥 Catálogo Premium
+</h2>
+
+
+<div class="grid">
+
+
+<div class="card">
+<h3>Netflix Pantalla Colombia</h3>
+<p class="precio">$85</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+
+<div class="card">
+<h3>Disney Premium + 7 ESPN Pantalla</h3>
+<p class="precio">$50</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+
+<div class="card">
+<h3>Prime Video Pantalla</h3>
+<p class="precio">$35</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+
+<div class="card">
+<h3>Max Pantalla Estándar</h3>
+<p class="precio">$30</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+
+<div class="card">
+<h3>Disney Premium + 3 ESPN Pantalla</h3>
+<p class="precio">$35</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+
+<div class="card">
+<h3>Disney+ Pantalla Estándar</h3>
+<p class="precio">$30</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+
+<div class="card">
+<h3>Netflix Internacional</h3>
+<p class="precio">$85</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+
+<div class="card">
+<h3>Paramount Pantalla</h3>
+<p class="precio">$45</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+
+<div class="card">
+<h3>Crunchyroll Pantalla</h3>
+<p class="precio">$35</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+
+<div class="card">
+<h3>Spotify 30 Días</h3>
+<p class="precio">$50</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+
+<div class="card">
+<h3>YouTube Premium X1 Mes</h3>
+<p class="precio">$65</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div><div class="card">
+<h3>IPTV Pantalla (Servidor Privado)</h3>
+<p class="precio">$30</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Panel Metegol X10 Créditos</h3>
+<p class="precio">$550</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Canal de Apuestas Deportivas</h3>
+<p class="precio">$1,500</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Panel Magis TV Pro X30 Créditos</h3>
+<p class="precio">$1,490</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Camiseta Colombia 1.1</h3>
+<p class="precio">$550</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Panel Flujo TV X30 Créditos</h3>
+<p class="precio">$2,700</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Panel Tele Latino X20 Créditos</h3>
+<p class="precio">$1,800</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Plex Cuenta Completa Todos los dispositivos</h3>
+<p class="precio">$60</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Seguidores Facebook (500)</h3>
+<p class="precio">$65</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Fox One 1 Dispositivo</h3>
+<p class="precio">$50</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>NBA League Pass 1 Dispositivo</h3>
+<p class="precio">$55</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Universal+ Completa 5 Pantallas</h3>
+<p class="precio">$85</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Panel IPTV Smarters Pro</h3>
+<p class="precio">$320</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>VPN Express 1 Mes</h3>
+<p class="precio">$65</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Tele Latino Completa X30 Días</h3>
+<p class="precio">$100</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Emby Cuenta 2 Pantallas Premium + TV</h3>
+<p class="precio">$90</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Jellyfin Completa</h3>
+<p class="precio">$90</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Netflix Completa Estándar México</h3>
+<p class="precio">$150</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Claro Video con Win+ Colombia</h3>
+<p class="precio">$115</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Diamantes Free Fire 100+10</h3>
+<p class="precio">$35</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Seguidores TikTok (500)</h3>
+<p class="precio">$115</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Magis TV Pro Completa</h3>
+<p class="precio">$70</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Spotify 2 Meses</h3>
+<p class="precio">$100</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Office 365 Completa Anual</h3>
+<p class="precio">$270</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Duo Lingo Pro</h3>
+<p class="precio">$30</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Flujo Completa</h3>
+<p class="precio">$115</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div>
+
+<div class="card">
+<h3>Spotify X6 Meses</h3>
+<p class="precio">$260</p>
+<a class="btn" href="https://wa.me/529841158507">Comprar</a>
+</div></div>
+
+
+<div class="container" id="clientes">
+
+<h2 class="titulo">
+⭐ Clientes satisfechos
+</h2>
+
+
+<div class="clientes">
+
+
+<div class="opinion">
+<b>Juan Carlos M.</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Excelente servicio, rápido y confiable.</p>
+</div>
+
+
+<div class="opinion">
+<b>María López</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Muy buena atención y soporte.</p>
+</div>
+
+
+<div class="opinion">
+<b>Carlos Ramírez</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Todo funcionando correctamente.</p>
+</div>
+
+
+<div class="opinion">
+<b>Andrés Hernández</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Gran variedad de servicios.</p>
+</div>
+
+
+<div class="opinion">
+<b>Laura García</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Muy recomendado.</p>
+</div>
+
+
+<div class="opinion">
+<b>Roberto Sánchez</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Excelente experiencia.</p>
+</div>
+
+
+<div class="opinion">
+<b>Miguel Torres</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Servicio profesional.</p>
+</div>
+
+
+<div class="opinion">
+<b>Ana Martínez</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Respuesta rápida.</p>
+</div>
+
+
+<div class="opinion">
+<b>José Pérez</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Muy satisfecho con la compra.</p>
+</div>
+
+
+<div class="opinion">
+<b>Daniela Ruiz</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Excelente soporte.</p>
+</div>
+
+
+<div class="opinion">
+<b>Fernando Cruz</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Recomendado al 100%.</p>
+</div>
+
+
+<div class="opinion">
+<b>Patricia Gómez</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Todo perfecto.</p>
+</div>
+
+
+<div class="opinion">
+<b>Luis Mendoza</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Muy buen servicio.</p>
+</div>
+
+
+<div class="opinion">
+<b>Sofía Herrera</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Excelente atención.</p>
+</div>
+
+
+<div class="opinion">
+<b>Ricardo Vargas</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Muy recomendado.</p>
+</div>
+
+
+<div class="opinion">
+<b>Elena Castillo</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Calidad y rapidez.</p>
+</div>
+
+
+<div class="opinion">
+<b>Diego Navarro</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Buen servicio digital.</p>
+</div>
+
+
+<div class="opinion">
+<b>Gabriela Flores</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Excelente plataforma.</p>
+</div>
+
+
+<div class="opinion">
+<b>Manuel Ortiz</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Muy satisfecho.</p>
+</div>
+
+
+<div class="opinion">
+<b>Valeria Moreno</b>
+<p class="estrellas">⭐⭐⭐⭐⭐</p>
+<p>Gran atención al cliente.</p>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<div class="container" id="contacto">
+
+<h2 class="titulo">
+📲 Contacto
+</h2>
+
+<center>
+
+<p>
+WhatsApp: 9841158507
+</p>
+
+<p>
+Correo:
+<br>
+alartelsistemasproyecta@gmail.com
+</p>
+
+</center>
+
+</div>
+
+
+
+<!-- BOTON FLOTANTE WHATSAPP -->
+
+<a class="whatsapp"
+href="https://wa.me/529841158507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20información"
+target="_blank">
+
+💬
+
+</a>
+
+
+
+<footer>
+
+<h3>⚡ Vortex Hub Pro</h3>
+
+<p>
+Servicios digitales premium
+</p>
+
+<p>
+© 2026 Todos los derechos reservados
+</p>
+
+</footer>
+
+
+</body>
+
+</html>
