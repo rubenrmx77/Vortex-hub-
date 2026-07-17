@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Vortex Hub Pro - Tienda digital premium con los mejores productos de entretenimiento y servicios digitales."/>
+  <meta name="description" content="Vortex Hub Pro - Tienda digital premium con integración IPTV, streaming, gaming y servicios digitales."/>
   <meta name="theme-color" content="#001827"/>
-  <title>Vortex Hub Pro · Tienda Digital</title>
+  <title>Vortex Hub Pro · IPTV & Tienda Digital</title>
 
-  <!-- Font Awesome 6 (gratuito) -->
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- Google Fonts: Inter -->
@@ -17,7 +17,7 @@
 
   <style>
     /* ================================================================
-       RESET Y VARIABLES (diseño oscuro premium)
+       RESET Y VARIABLES
     ================================================================ */
     * {
       margin: 0;
@@ -72,6 +72,14 @@
       margin: 0 auto;
       padding: 0 24px 60px;
     }
+
+    /* ================================================================
+       SCROLLBAR PERSONALIZADA
+    ================================================================ */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--fondo-body); }
+    ::-webkit-scrollbar-thumb { background: var(--azul); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cielo); }
 
     /* ================================================================
        HEADER
@@ -176,6 +184,53 @@
     }
 
     /* ================================================================
+       HERO BANNER
+    ================================================================ */
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(0, 27, 46, 0.8), rgba(8, 14, 26, 0.9)), url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%2300eaff" fill-opacity="0.03"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+      border-radius: var(--radio);
+      padding: 60px 40px;
+      margin: 30px auto 40px;
+      text-align: center;
+      border: 1px solid rgba(0, 234, 255, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-banner h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--texto-primario);
+      margin-bottom: 12px;
+    }
+    .hero-banner h2 span {
+      color: var(--cielo);
+    }
+    .hero-banner p {
+      color: var(--texto-secundario);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 24px;
+    }
+    .hero-banner .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--cielo), var(--azul));
+      color: #0a1428;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 36px;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: all var(--transicion);
+      box-shadow: 0 4px 30px rgba(0, 234, 255, 0.20);
+    }
+    .hero-banner .btn-hero:hover {
+      transform: scale(1.04);
+      box-shadow: 0 8px 40px rgba(0, 234, 255, 0.30);
+    }
+
+    /* ================================================================
        TÍTULOS DE SECCIÓN
     ================================================================ */
     .section-title {
@@ -204,6 +259,36 @@
     }
     .section-title i {
       color: var(--cielo);
+    }
+
+    /* ================================================================
+       FILTROS / CATEGORÍAS
+    ================================================================ */
+    .filtros {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .filtros button {
+      background: var(--fondo-card);
+      color: var(--texto-secundario);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 8px 20px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all var(--transicion);
+      font-family: "Inter", sans-serif;
+    }
+    .filtros button:hover,
+    .filtros button.activo {
+      background: linear-gradient(135deg, var(--cielo), var(--azul));
+      color: #0a1428;
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(0, 234, 255, 0.15);
     }
 
     /* ================================================================
@@ -283,6 +368,33 @@
       margin-left: 2px;
     }
 
+    .card .tag-oferta {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: linear-gradient(135deg, var(--naranja), #dc2626);
+      color: #fff;
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 40px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .card .tag-nuevo {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: linear-gradient(135deg, var(--verde), #059669);
+      color: #fff;
+      font-size: 0.55rem;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 40px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
     /* ================================================================
        BOTÓN
     ================================================================ */
@@ -311,6 +423,102 @@
     }
     .btn i {
       font-size: 0.95rem;
+    }
+
+    /* ================================================================
+       SECCIÓN IPTV - MI FLUJO TV (COMPLEMENTO)
+    ================================================================ */
+    .iptv-container {
+      background: var(--fondo-card);
+      border-radius: var(--radio);
+      padding: 0;
+      border: 1px solid rgba(0, 234, 255, 0.06);
+      box-shadow: var(--sombra-card);
+      overflow: hidden;
+      margin-top: 10px;
+    }
+    .iptv-header {
+      background: linear-gradient(135deg, rgba(0, 234, 255, 0.05), rgba(37, 99, 235, 0.05));
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .iptv-header h3 {
+      color: var(--cielo);
+      font-size: 1.2rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .iptv-header h3 i {
+      font-size: 1.4rem;
+    }
+    .iptv-header .iptv-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--verde);
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .iptv-header .iptv-status .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--verde);
+      animation: pulse-dot 1.5s infinite;
+    }
+    @keyframes pulse-dot {
+      0% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0.3; transform: scale(0.8); }
+    }
+    .iptv-iframe {
+      width: 100%;
+      height: 650px;
+      border: none;
+      background: #050d1a;
+      display: block;
+    }
+    .iptv-footer {
+      padding: 14px 24px;
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .iptv-footer p {
+      color: var(--texto-terciario);
+      font-size: 0.75rem;
+    }
+    .iptv-footer p i {
+      color: var(--cielo);
+      margin-right: 4px;
+    }
+    .iptv-footer .btn-iptv {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 234, 255, 0.08);
+      color: var(--cielo);
+      padding: 6px 16px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid rgba(0, 234, 255, 0.10);
+      transition: all var(--transicion);
+    }
+    .iptv-footer .btn-iptv:hover {
+      background: rgba(0, 234, 255, 0.15);
+      transform: scale(1.02);
     }
 
     /* ================================================================
@@ -376,7 +584,7 @@
     }
 
     /* ================================================================
-       ADMIN (sin usuario/contraseña)
+       ADMIN
     ================================================================ */
     .admin-card {
       background: var(--fondo-card);
@@ -414,6 +622,55 @@
       max-width: 220px;
     }
 
+    #panelAdmin {
+      display: none;
+      background: var(--fondo-card);
+      padding: 28px 24px;
+      max-width: 500px;
+      margin: 24px auto;
+      border-radius: var(--radio);
+      border: 1px solid rgba(0, 234, 255, 0.08);
+      color: var(--texto-secundario);
+      text-align: center;
+      box-shadow: var(--sombra-card);
+    }
+    #panelAdmin h2 {
+      color: var(--cielo);
+      margin-bottom: 12px;
+      font-size: 1.4rem;
+    }
+    #panelAdmin ul {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0;
+    }
+    #panelAdmin ul li {
+      padding: 4px 0;
+      color: var(--texto-terciario);
+      font-size: 0.9rem;
+    }
+    #panelAdmin ul li::before {
+      content: "✓ ";
+      color: var(--verde);
+      font-weight: 700;
+    }
+
+    /* ================================================================
+       CONTADOR DE VISITAS
+    ================================================================ */
+    .contador-visitas {
+      text-align: center;
+      padding: 20px;
+      color: var(--texto-terciario);
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      margin-top: 20px;
+    }
+    .contador-visitas span {
+      color: var(--cielo);
+      font-weight: 700;
+    }
+
     /* ================================================================
        WHATSAPP FLOTANTE
     ================================================================ */
@@ -445,6 +702,41 @@
       0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.3); }
       70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* ================================================================
+       BOTÓN SUBIR
+    ================================================================ */
+    .scroll-top {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      background: var(--fondo-card);
+      color: var(--cielo);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      text-decoration: none;
+      border: 1px solid rgba(0, 234, 255, 0.10);
+      transition: all var(--transicion);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+    }
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .scroll-top:hover {
+      background: var(--azul);
+      color: #fff;
+      transform: scale(1.10);
     }
 
     /* ================================================================
@@ -496,6 +788,20 @@
       margin-top: 8px;
       opacity: 0.6;
     }
+    footer .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 12px 0;
+    }
+    footer .footer-social a {
+      color: var(--texto-terciario);
+      font-size: 1.2rem;
+      transition: color 0.25s ease;
+    }
+    footer .footer-social a:hover {
+      color: var(--cielo);
+    }
 
     /* ================================================================
        RESPONSIVE
@@ -511,22 +817,28 @@
       .card .precio { font-size: 1.3rem; }
       .btn { font-size: 0.75rem; padding: 8px 18px; max-width: 150px; }
       .whatsapp-float { width: 52px; height: 52px; font-size: 1.8rem; bottom: 16px; right: 16px; }
+      .scroll-top { width: 40px; height: 40px; font-size: 1rem; bottom: 80px; right: 16px; }
       nav a { margin: 0 10px; font-size: 0.75rem; }
       nav a i { margin-right: 4px; }
       .admin-card { padding: 20px 14px; }
       footer .footer-links { gap: 14px; }
       footer .footer-links a { font-size: 0.8rem; }
+      .hero-banner { padding: 40px 20px; }
+      .hero-banner h2 { font-size: 1.6rem; }
+      .filtros button { font-size: 0.7rem; padding: 6px 14px; }
+      .iptv-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .iptv-iframe { height: 400px; }
+      .iptv-footer { flex-direction: column; align-items: flex-start; }
     }
 
     /* ================================================================
-       ANIMACIÓN DE ENTRADA (fade-up)
+       ANIMACIÓN DE ENTRADA
     ================================================================ */
     .card, .card-testimonio {
       opacity: 0;
       animation: fadeUp 0.5s ease forwards;
     }
 
-    /* Retrasos escalonados para las tarjetas (hasta 44 productos) */
     .card:nth-child(1)  { animation-delay: 0.02s; }
     .card:nth-child(2)  { animation-delay: 0.04s; }
     .card:nth-child(3)  { animation-delay: 0.06s; }
@@ -582,7 +894,7 @@
     <div class="logo">
       <i class="fas fa-bolt"></i> VORTEX HUB PRO
     </div>
-    <p class="slogan">Entretenimiento digital premium · Calidad y confianza</p>
+    <p class="slogan">Entretenimiento digital premium · IPTV · Streaming · Gaming</p>
     <p class="contacto-header">
       <i class="fas fa-envelope"></i> alartelsistemasproyecta@gmail.com
     </p>
@@ -592,10 +904,65 @@
        NAV
   ================================================================ -->
   <nav>
-    <a href="#servicios"><i class="fas fa-store"></i> Servicios</a>
+    <a href="#iptv"><i class="fas fa-tv"></i> Mi Flujo TV</a>
+    <a href="#servicios"><i class="fas fa-store"></i> Tienda</a>
     <a href="#clientes"><i class="fas fa-star"></i> Clientes</a>
     <a href="#admin"><i class="fas fa-lock"></i> Admin</a>
   </nav>
+
+  <!-- ================================================================
+       HERO BANNER
+  ================================================================ -->
+  <div class="container">
+    <div class="hero-banner">
+      <h2>📺 <span>Mi Flujo TV</span> Integrado</h2>
+      <p>Accede a tu panel IPTV directamente desde Vortex Hub Pro. Disfruta de canales en vivo, VOD y más.</p>
+      <a href="#iptv" class="btn-hero"><i class="fas fa-play-circle"></i> Abrir IPTV</a>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       SECCIÓN IPTV - MI FLUJO TV (COMPLEMENTO)
+  ================================================================ -->
+  <section id="iptv" class="container">
+    <h2 class="section-title">
+      <i class="fas fa-tv" style="color:#00eaff;"></i> Mi Flujo TV
+      <span class="badge">IPTV integrado</span>
+    </h2>
+
+    <div class="iptv-container">
+      <!-- Header -->
+      <div class="iptv-header">
+        <h3>
+          <i class="fas fa-satellite-dish"></i> app.miflujtv.tv
+        </h3>
+        <div class="iptv-status">
+          <span class="dot"></span>
+          <span>Conectado · Servidor activo</span>
+        </div>
+      </div>
+
+      <!-- Iframe con la página IPTV -->
+      <iframe
+        class="iptv-iframe"
+        src="https://app.miflujtv.tv"
+        title="Mi Flujo TV - Panel IPTV"
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+        allow="autoplay; encrypted-media; fullscreen"
+      ></iframe>
+
+      <!-- Footer -->
+      <div class="iptv-footer">
+        <p>
+          <i class="fas fa-info-circle"></i> Panel IPTV integrado · Requiere credenciales de acceso
+        </p>
+        <a href="https://app.miflujtv.tv" target="_blank" rel="noopener noreferrer" class="btn-iptv">
+          <i class="fas fa-external-link-alt"></i> Abrir en nueva pestaña
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- ================================================================
        CATÁLOGO DE PRODUCTOS
@@ -606,309 +973,326 @@
       <span class="badge">38 productos</span>
     </h2>
 
-    <div class="grid">
+    <!-- Filtros -->
+    <div class="filtros" id="categorias">
+      <button class="activo" data-filtro="todos">Todos</button>
+      <button data-filtro="streaming">Streaming</button>
+      <button data-filtro="gaming">Gaming</button>
+      <button data-filtro="paneles">Paneles</button>
+      <button data-filtro="redes">Redes Sociales</button>
+      <button data-filtro="otros">Otros</button>
+    </div>
 
-      <!-- 1 -->
-      <div class="card">
+    <div class="grid" id="productosGrid">
+
+      <!-- 1 - Streaming -->
+      <div class="card" data-categoria="streaming">
+        <span class="tag-oferta">🔥 Oferta</span>
         <div class="icono"><i class="fas fa-film"></i></div>
         <h3>Netflix Pantalla Colombia</h3>
-        <p class="precio">$85</p>
+        <p class="precio">$85 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Netflix%20Pantalla%20Colombia"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 2 -->
-      <div class="card">
+      <!-- 2 - Streaming -->
+      <div class="card" data-categoria="streaming">
+        <span class="tag-nuevo">✨ Nuevo</span>
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Disney Premium c/7 ESPN</h3>
-        <p class="precio">$50</p>
+        <p class="precio">$50 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Disney%20Premium%20con%207%20ESPN"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 3 -->
-      <div class="card">
+      <!-- 3 - Streaming -->
+      <div class="card" data-categoria="streaming">
         <div class="icono"><i class="fas fa-play-circle"></i></div>
         <h3>Prime Video Pantalla</h3>
-        <p class="precio">$35</p>
+        <p class="precio">$35 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Prime%20Video%20Pantalla"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 4 -->
-      <div class="card">
+      <!-- 4 - Streaming -->
+      <div class="card" data-categoria="streaming">
         <div class="icono"><i class="fas fa-crown"></i></div>
         <h3>Max Pantalla Estándar</h3>
-        <p class="precio">$30</p>
+        <p class="precio">$30 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Max%20Pantalla%20Estándar"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 5 -->
-      <div class="card">
+      <!-- 5 - Streaming -->
+      <div class="card" data-categoria="streaming">
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Disney Premium c/3 ESPN</h3>
-        <p class="precio">$35</p>
+        <p class="precio">$35 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Disney%20Premium%20con%203%20ESPN"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 6 -->
-      <div class="card">
+      <!-- 6 - Streaming -->
+      <div class="card" data-categoria="streaming">
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Disney+ Pantalla Estándar</h3>
-        <p class="precio">$30</p>
+        <p class="precio">$30 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Disney+%20Pantalla%20Estándar"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 7 -->
-      <div class="card">
+      <!-- 7 - Streaming -->
+      <div class="card" data-categoria="streaming">
+        <span class="tag-oferta">🔥 Oferta</span>
         <div class="icono"><i class="fas fa-globe"></i></div>
         <h3>Netflix Internacional</h3>
-        <p class="precio">$85</p>
+        <p class="precio">$85 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Netflix%20Internacional"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 8 -->
-      <div class="card">
+      <!-- 8 - Streaming -->
+      <div class="card" data-categoria="streaming">
         <div class="icono"><i class="fas fa-video"></i></div>
         <h3>Paramount Pantalla</h3>
-        <p class="precio">$45</p>
+        <p class="precio">$45 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Paramount%20Pantalla"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 9 -->
-      <div class="card">
+      <!-- 9 - Streaming -->
+      <div class="card" data-categoria="streaming">
         <div class="icono"><i class="fas fa-anime"></i></div>
         <h3>Crunchyroll Pantalla</h3>
-        <p class="precio">$35</p>
+        <p class="precio">$35 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Crunchyroll%20Pantalla"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 10 -->
-      <div class="card">
+      <!-- 10 - Otros -->
+      <div class="card" data-categoria="otros">
         <div class="icono"><i class="fab fa-spotify"></i></div>
         <h3>Spotify 30 Días</h3>
-        <p class="precio">$50</p>
+        <p class="precio">$50 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Spotify%2030%20Días"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 11 -->
-      <div class="card">
+      <!-- 11 - Otros -->
+      <div class="card" data-categoria="otros">
         <div class="icono"><i class="fab fa-youtube"></i></div>
         <h3>YouTube Premium X1 Mes</h3>
-        <p class="precio">$65</p>
+        <p class="precio">$65 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20YouTube%20Premium%20X1%20Mes"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 12 -->
-      <div class="card">
+      <!-- 12 - Paneles -->
+      <div class="card" data-categoria="paneles">
+        <span class="tag-nuevo">✨ Nuevo</span>
         <div class="icono"><i class="fas fa-satellite-dish"></i></div>
         <h3>IPTV Pantalla Privado</h3>
-        <p class="precio">$30</p>
+        <p class="precio">$30 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20IPTV%20Pantalla%20Privado"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 13 -->
-      <div class="card">
+      <!-- 13 - Gaming -->
+      <div class="card" data-categoria="gaming">
         <div class="icono"><i class="fas fa-futbol"></i></div>
         <h3>Panel Metegol X10 Créditos</h3>
-        <p class="precio">$550</p>
+        <p class="precio">$550 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Panel%20Metegol%20X10%20Créditos"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 14 -->
-      <div class="card">
+      <!-- 14 - Otros -->
+      <div class="card" data-categoria="otros">
         <div class="icono"><i class="fas fa-trophy"></i></div>
         <h3>Canal Apuestas Deportivas</h3>
-        <p class="precio">$1,500</p>
+        <p class="precio">$1,500 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Canal%20de%20Apuestas%20Deportivas"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 15 -->
-      <div class="card">
+      <!-- 15 - Paneles -->
+      <div class="card" data-categoria="paneles">
+        <span class="tag-oferta">🔥 Oferta</span>
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Panel Magis TV Pro X30</h3>
-        <p class="precio">$1,490</p>
+        <p class="precio">$1,490 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Panel%20Magis%20TV%20Pro%20X30"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 16 -->
-      <div class="card">
+      <!-- 16 - Otros -->
+      <div class="card" data-categoria="otros">
         <div class="icono"><i class="fas fa-tshirt"></i></div>
         <h3>Camiseta Colombia 1.1</h3>
-        <p class="precio">$550</p>
+        <p class="precio">$550 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Camiseta%20Colombia%201.1"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 17 -->
-      <div class="card">
+      <!-- 17 - Paneles -->
+      <div class="card" data-categoria="paneles">
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Panel Flujo TV X30</h3>
-        <p class="precio">$2,700</p>
+        <p class="precio">$2,700 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Panel%20Flujo%20TV%20X30"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 18 -->
-      <div class="card">
+      <!-- 18 - Paneles -->
+      <div class="card" data-categoria="paneles">
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Panel Tele Latino X20</h3>
-        <p class="precio">$1,800</p>
+        <p class="precio">$1,800 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Panel%20Tele%20Latino%20X20"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 19 -->
-      <div class="card">
+      <!-- 19 - Otros -->
+      <div class="card" data-categoria="otros">
         <div class="icono"><i class="fas fa-server"></i></div>
         <h3>Plex Cuenta Completa</h3>
-        <p class="precio">$60</p>
+        <p class="precio">$60 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Plex%20Cuenta%20Completa"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 20 -->
-      <div class="card">
+      <!-- 20 - Redes -->
+      <div class="card" data-categoria="redes">
         <div class="icono"><i class="fab fa-facebook"></i></div>
         <h3>Seguidores Facebook 500</h3>
-        <p class="precio">$65</p>
+        <p class="precio">$65 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Seguidores%20Facebook%20500"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 21 -->
-      <div class="card">
+      <!-- 21 - Streaming -->
+      <div class="card" data-categoria="streaming">
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Fox One 1 Dispositivo</h3>
-        <p class="precio">$50</p>
+        <p class="precio">$50 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Fox%20One%201%20Dispositivo"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 22 -->
-      <div class="card">
+      <!-- 22 - Streaming -->
+      <div class="card" data-categoria="streaming">
         <div class="icono"><i class="fas fa-basketball-ball"></i></div>
         <h3>NBA League Pass</h3>
-        <p class="precio">$55</p>
+        <p class="precio">$55 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20NBA%20League%20Pass"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 23 -->
-      <div class="card">
+      <!-- 23 - Streaming -->
+      <div class="card" data-categoria="streaming">
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Universal+ 5 Pantallas</h3>
-        <p class="precio">$85</p>
+        <p class="precio">$85 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Universal+%205%20Pantallas"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 24 -->
-      <div class="card">
+      <!-- 24 - Paneles -->
+      <div class="card" data-categoria="paneles">
+        <span class="tag-nuevo">✨ Nuevo</span>
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Panel IPTV Smarters Pro</h3>
-        <p class="precio">$320</p>
+        <p class="precio">$320 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Panel%20IPTV%20Smarters%20Pro"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 25 -->
-      <div class="card">
+      <!-- 25 - Otros -->
+      <div class="card" data-categoria="otros">
         <div class="icono"><i class="fas fa-shield-alt"></i></div>
         <h3>VPN Express 1 Mes</h3>
-        <p class="precio">$65</p>
+        <p class="precio">$65 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20VPN%20Express%201%20Mes"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 26 -->
-      <div class="card">
+      <!-- 26 - Paneles -->
+      <div class="card" data-categoria="paneles">
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Tele Latino X30 Días</h3>
-        <p class="precio">$100</p>
+        <p class="precio">$100 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Tele%20Latino%20X30%20Días"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 27 -->
-      <div class="card">
+      <!-- 27 - Streaming -->
+      <div class="card" data-categoria="streaming">
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Emby 2 Pantallas Premium</h3>
-        <p class="precio">$90</p>
+        <p class="precio">$90 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Emby%202%20Pantallas%20Premium"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 28 -->
-      <div class="card">
+      <!-- 28 - Streaming -->
+      <div class="card" data-categoria="streaming">
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Jellyfin Completa</h3>
-        <p class="precio">$90</p>
+        <p class="precio">$90 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Jellyfin%20Completa"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 29 -->
-      <div class="card">
+      <!-- 29 - Streaming -->
+      <div class="card" data-categoria="streaming">
+        <span class="tag-oferta">🔥 Oferta</span>
         <div class="icono"><i class="fas fa-film"></i></div>
         <h3>Netflix Estándar México</h3>
-        <p class="precio">$150</p>
+        <p class="precio">$150 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Netflix%20Estándar%20México"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 30 -->
-      <div class="card">
+      <!-- 30 - Streaming -->
+      <div class="card" data-categoria="streaming">
         <div class="icono"><i class="fas fa-video"></i></div>
         <h3>Claro Video c/Win+ Col</h3>
-        <p class="precio">$115</p>
+        <p class="precio">$115 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Claro%20Video%20con%20Win+%20Colombia"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 31 -->
-      <div class="card">
+      <!-- 31 - Gaming -->
+      <div class="card" data-categoria="gaming">
         <div class="icono"><i class="fas fa-gem"></i></div>
         <h3>Diamantes Free Fire 100+10</h3>
-        <p class="precio">$35</p>
+        <p class="precio">$35 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Diamantes%20Free%20Fire%20100+10"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 32 -->
-      <div class="card">
+      <!-- 32 - Redes -->
+      <div class="card" data-categoria="redes">
         <div class="icono"><i class="fab fa-tiktok"></i></div>
         <h3>Seguidores TikTok 500</h3>
-        <p class="precio">$115</p>
+        <p class="precio">$115 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Seguidores%20TikTok%20500"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 33 -->
-      <div class="card">
+      <!-- 33 - Paneles -->
+      <div class="card" data-categoria="paneles">
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Magis TV Pro Completa</h3>
-        <p class="precio">$70</p>
+        <p class="precio">$70 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Magis%20TV%20Pro%20Completa"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 34 -->
-      <div class="card">
+      <!-- 34 - Otros -->
+      <div class="card" data-categoria="otros">
         <div class="icono"><i class="fab fa-spotify"></i></div>
         <h3>Spotify 2 Meses</h3>
-        <p class="precio">$100</p>
+        <p class="precio">$100 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Spotify%202%20Meses"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 35 -->
-      <div class="card">
+      <!-- 35 - Otros -->
+      <div class="card" data-categoria="otros">
         <div class="icono"><i class="fas fa-file-alt"></i></div>
         <h3>Office 365 Completa Anual</h3>
-        <p class="precio">$270</p>
+        <p class="precio">$270 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Office%20365%20Completa%20Anual"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 36 -->
-      <div class="card">
+      <!-- 36 - Otros -->
+      <div class="card" data-categoria="otros">
         <div class="icono"><i class="fas fa-language"></i></div>
         <h3>Duo Lingo Pro</h3>
-        <p class="precio">$30</p>
+        <p class="precio">$30 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Duo%20Lingo%20Pro"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 37 -->
-      <div class="card">
+      <!-- 37 - Paneles -->
+      <div class="card" data-categoria="paneles">
         <div class="icono"><i class="fas fa-tv"></i></div>
         <h3>Flujo Completa</h3>
-        <p class="precio">$70</p>
+        <p class="precio">$70 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Flujo%20Completa"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
-      <!-- 38 -->
-      <div class="card">
+      <!-- 38 - Otros -->
+      <div class="card" data-categoria="otros">
         <div class="icono"><i class="fab fa-spotify"></i></div>
         <h3>Spotify X6 Meses</h3>
-        <p class="precio">$260</p>
+        <p class="precio">$260 <small>MXN</small></p>
         <a class="btn" href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20Spotify%20X6%20Meses"><i class="fab fa-whatsapp"></i> Comprar</a>
       </div>
 
@@ -970,7 +1354,7 @@
   </section>
 
   <!-- ================================================================
-       ADMINISTRACIÓN (sin usuario y contraseña)
+       ADMINISTRACIÓN
   ================================================================ -->
   <section id="admin" class="container">
     <h2 class="section-title">
@@ -989,19 +1373,25 @@
       <span class="badge-admin"><i class="fas fa-key"></i> Acceso solo para administradores</span>
     </div>
 
-    <!-- Panel Admin (oculto) -->
-    <div id="panelAdmin" style="display:none;">
+    <div id="panelAdmin">
       <h2><i class="fas fa-cog"></i> Panel Administrador</h2>
       <p style="color:var(--verde);"><i class="fas fa-check-circle"></i> Acceso correcto</p>
       <p style="margin-top:8px; font-size:0.9rem;">Aquí podrás agregar después:</p>
-      <ul style="list-style:none; padding:0; margin:14px 0; text-align:center;">
-        <li style="padding:4px 0; color:var(--texto-terciario);">✓ Cambiar precios</li>
-        <li style="padding:4px 0; color:var(--texto-terciario);">✓ Agregar productos</li>
-        <li style="padding:4px 0; color:var(--texto-terciario);">✓ Editar promociones</li>
-        <li style="padding:4px 0; color:var(--texto-terciario);">✓ Actualizar servicios</li>
+      <ul>
+        <li>Cambiar precios</li>
+        <li>Agregar productos</li>
+        <li>Editar promociones</li>
+        <li>Actualizar servicios</li>
       </ul>
     </div>
   </section>
+
+  <!-- ================================================================
+       CONTADOR DE VISITAS
+  ================================================================ -->
+  <div class="contador-visitas">
+    <i class="fas fa-eye"></i> Visitas: <span id="contadorVisitas">0</span>
+  </div>
 
   <!-- ================================================================
        WHATSAPP FLOTANTE
@@ -1015,11 +1405,24 @@
   </a>
 
   <!-- ================================================================
+       BOTÓN SUBIR
+  ================================================================ -->
+  <a href="#" class="scroll-top" id="scrollTop" aria-label="Subir">
+    <i class="fas fa-chevron-up"></i>
+  </a>
+
+  <!-- ================================================================
        FOOTER
   ================================================================ -->
   <footer>
     <div class="footer-brand">
       <i class="fas fa-bolt"></i> Vortex Hub Pro
+    </div>
+    <div class="footer-social">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
     </div>
     <div class="footer-links">
       <a href="https://wa.me/529841157507"><i class="fab fa-whatsapp"></i> 984 115 7507</a>
@@ -1031,9 +1434,12 @@
   </footer>
 
   <!-- ================================================================
-       SCRIPT
+       SCRIPTS
   ================================================================ -->
   <script>
+    // =============================================================
+    // 1. ADMIN
+    // =============================================================
     function abrirAdmin() {
       let usuario = prompt("Usuario administrador:");
       if (usuario === null) return;
@@ -1049,9 +1455,61 @@
         return;
       }
 
-      document.getElementById("panelAdmin").style.display = "block";
-      document.getElementById("panelAdmin").scrollIntoView({ behavior: "smooth", block: "center" });
+      const panel = document.getElementById("panelAdmin");
+      panel.style.display = "block";
+      panel.scrollIntoView({ behavior: "smooth", block: "center" });
     }
+
+    // =============================================================
+    // 2. FILTROS POR CATEGORÍA
+    // =============================================================
+    const filtros = document.querySelectorAll('.filtros button');
+    const productos = document.querySelectorAll('#productosGrid .card');
+
+    filtros.forEach(boton => {
+      boton.addEventListener('click', function() {
+        filtros.forEach(b => b.classList.remove('activo'));
+        this.classList.add('activo');
+
+        const categoria = this.dataset.filtro;
+
+        productos.forEach(producto => {
+          if (categoria === 'todos') {
+            producto.style.display = 'flex';
+          } else {
+            producto.style.display = producto.dataset.categoria === categoria ? 'flex' : 'none';
+          }
+        });
+      });
+    });
+
+    // =============================================================
+    // 3. BOTÓN SUBIR
+    // =============================================================
+    const scrollBtn = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', () => {
+      scrollBtn.classList.toggle('visible', window.scrollY > 400);
+    });
+
+    scrollBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // =============================================================
+    // 4. CONTADOR DE VISITAS
+    // =============================================================
+    let visitas = localStorage.getItem('visitasVortex');
+    visitas = visitas === null ? 1 : parseInt(visitas) + 1;
+    localStorage.setItem('visitasVortex', visitas);
+    document.getElementById('contadorVisitas').textContent = visitas;
+
+    // =============================================================
+    // 5. AÑO DINÁMICO
+    // =============================================================
+    document.querySelector('.footer-copy').textContent =
+      `© ${new Date().getFullYear()} Vortex Hub Pro — Todos los derechos reservados`;
   </script>
 
 </body>
