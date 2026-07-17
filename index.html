@@ -1088,25 +1088,7 @@
        SCRIPT
   ================================================================ -->
   <script>
-    function abrirAdmin() {
-      let usuario = prompt("Usuario administrador:");
-      if (usuario === null) return;
-      if (usuario.trim() !== "Admin") {
-        alert("❌ Usuario incorrecto");
-        return;
-      }
-
-      let clave = prompt("Contraseña administrador:");
-      if (clave === null) return;
-      if (clave.trim() !== "Vortex2026#") {
-        alert("❌ Contraseña incorrecta");
-        return;
-      }
-
-      document.getElementById("panelAdmin").style.display = "block";
-      document.getElementById("panelAdmin").scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  </script>
+    
 
 </body>
 </html>
