@@ -490,356 +490,386 @@ Aquí podrás agregar después:
 </div>
 <section id="clientes" class="container">
 
-<h2 class="titulo">
-⭐ Clientes Satisfechos
-</h2>
-<div style="
-display:flex;
-overflow-x:auto;
-gap:20px;
-padding:10px;
-scroll-behavior:smooth;
-">
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=1" width="90" style="border-radius:50%;">
-<h3>Juan Carlos M.</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Excelente servicio.</p>
-</div>
 
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=2" width="90" style="border-radius:50%;">
-<h3>María López</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Muy recomendado.</p>
-</div>
 
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=3" width="90" style="border-radius:50%;">
-<h3>Carlos Ramírez</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Atención rápida.</p>
-</div>
+    body {
+      background: #f6f9fc;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 60px 24px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-<!-- Repite hasta completar 20 clientes -->
+    /* ===== ENCABEZADO ===== */
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0b1a33;
+      letter-spacing: -0.5px;
+    }
+    .header h1 span {
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .header p {
+      color: #64748b;
+      font-size: 1.05rem;
+      margin-top: 6px;
+      font-weight: 400;
+    }
 
-</div>
+    /* ===== CONTENEDOR GRID ===== */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 28px;
+      max-width: 1360px;
+      width: 100%;
+    }
 
-</section><section id="clientes" class="container">
+    /* ===== TARJETA ===== */
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 28px 18px 22px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(226, 232, 240, 0.6);
+      transition: all 0.25s ease;
+      backdrop-filter: blur(2px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+      border-color: #dbe7f5;
+    }
 
-<h2 class="titulo">
-⭐ Clientes Satisfechos
-</h2>
+    /* ===== AVATAR CON BRILLO ===== */
+    .avatar-ring {
+      position: relative;
+      display: inline-block;
+      border-radius: 50%;
+      padding: 4px;
+      background: conic-gradient(from 0deg, #2563eb, #7c3aed, #ec4899, #2563eb);
+      background-size: 200% 200%;
+      animation: spinGlow 5s linear infinite;
+      box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+      transition: box-shadow 0.4s ease;
+      margin-bottom: 4px;
+    }
+    .card:hover .avatar-ring {
+      box-shadow: 0 0 28px 6px rgba(37, 99, 235, 0.20);
+    }
+    @keyframes spinGlow {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .avatar-ring img {
+      display: block;
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      border: 3px solid #ffffff;
+      object-fit: cover;
+      background: #f1f5f9;
+    }
 
-<div style="
-display:flex;
-overflow-x:auto;
-gap:20px;
-padding:10px;
-scroll-behavior:smooth;
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=1" width="90" style="border-radius:50%;">
-<h3>Juan Carlos M.</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Excelente servicio.</p>
-</div>
+    /* ===== NOMBRE ===== */
+    .card h3 {
+      margin-top: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0f1a2e;
+      letter-spacing: -0.2px;
+      line-height: 1.3;
+    }
+    .card .role {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 1px;
+    }
 
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=2" width="90" style="border-radius:50%;">
-<h3>María López</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Muy recomendado.</p>
-</div>
+    /* ===== ESTRELLAS ===== */
+    .stars {
+      margin: 6px 0 4px;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: #fbbf24;
+    }
 
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=3" width="90" style="border-radius:50%;">
-<h3>Carlos Ramírez</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Atención rápida.</p>
-</div>
+    /* ===== RESEÑA ===== */
+    .review {
+      margin-top: 10px;
+      font-size: 0.88rem;
+      color: #334155;
+      background: #f1f6fc;
+      padding: 8px 14px;
+      border-radius: 40px;
+      font-weight: 450;
+      line-height: 1.4;
+      width: 100%;
+      max-width: 200px;
+      transition: background 0.2s;
+    }
+    .card:hover .review {
+      background: #e8f0fe;
+    }
 
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=4" width="90" style="border-radius:50%;">
-<h3>Ana Torres</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Gran experiencia.</p>
-</div>
+    /* ===== BADGE DE VERIFICACIÓN ===== */
+    .verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 8px;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: #16a34a;
+      background: #dcfce7;
+      padding: 2px 12px;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+    }
+    .verified::before {
+      content: "✓";
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
 
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=5" width="90" style="border-radius:50%;">
-<h3>Luis Herrera</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Servicio confiable.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=6" width="90" style="border-radius:50%;">
-<h3>Sofía Martínez</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Todo perfecto.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=7" width="90" style="border-radius:50%;">
-<h3>Pedro Gómez</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Muy profesionales.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=8" width="90" style="border-radius:50%;">
-<h3>Laura Díaz</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Excelente calidad.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=9" width="90" style="border-radius:50%;">
-<h3>Ricardo Vega</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Superó expectativas.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=10" width="90" style="border-radius:50%;">
-<h3>Patricia Ruiz</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Muy satisfecha.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=11" width="90" style="border-radius:50%;">
-<h3>Fernando Castro</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Atención impecable.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=12" width="90" style="border-radius:50%;">
-<h3>Gabriela León</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Lo recomiendo.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=13" width="90" style="border-radius:50%;">
-<h3>Diego Navarro</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Muy eficiente.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=14" width="90" style="border-radius:50%;">
-<h3>Valeria Mendoza</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Excelente trato.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=15" width="90" style="border-radius:50%;">
-<h3>Jorge Salas</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Resultados increíbles.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=16" width="90" style="border-radius:50%;">
-<h3>Elena Paredes</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Muy buena atención.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=17" width="90" style="border-radius:50%;">
-<h3>Miguel Santos</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Servicio de primera.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=18" width="90" style="border-radius:50%;">
-<h3>Daniela Rojas</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Muy recomendable.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=19" width="90" style="border-radius:50%;">
-<h3>Andrés Molina</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Trabajo excelente.</p>
-</div>
-
-<div class="card">
-<img src="https://i.pravatar.cc/150?img=20" width="90" style="border-radius:50%;">
-<h3>Camila Flores</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Quedé encantada.</p>
-</div>
-
-</div>
-
-</section<title>20 Reseñas</title>
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      body { padding: 32px 12px; }
+      .header h1 { font-size: 1.6rem; }
+      .grid { gap: 18px; }
+      .card { padding: 20px 12px 16px; }
+      .avatar-ring img { width: 68px; height: 68px; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Tarjeta 1 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=1" width="90" style="border-radius:50%;">
-    <h3>Juan Carlos M.</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Excelente servicio.</p>
-  </div>
 
-  <!-- Tarjeta 2 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=2" width="90" style="border-radius:50%;">
-    <h3>María Fernanda G.</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Atención rápida y amable.</p>
-  </div>
+  <!-- ===== ENCABEZADO ===== -->
+  <header class="header">
+    <h1>Lo que dicen <span>nuestros clientes</span></h1>
+    <p>Más de 20 personas confían en nosotros</p>
+  </header>
 
-  <!-- Tarjeta 3 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=3" width="90" style="border-radius:50%;">
-    <h3>Carlos Andrés R.</h3>
-    <p>⭐⭐⭐⭐</p>
-    <p>Muy buen producto, lo recomiendo.</p>
-  </div>
+  <!-- ===== GRID DE 20 TARJETAS ===== -->
+  <div class="grid">
 
-  <!-- Tarjeta 4 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=4" width="90" style="border-radius:50%;">
-    <h3>Ana Lucía P.</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Súper profesionales, volveré.</p>
-  </div>
+    <!-- 1 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=1" alt="Juan Carlos"></div>
+      <h3>Juan Carlos M.</h3>
+      <div class="role">Cliente frecuente</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review">Excelente servicio.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 5 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=5" width="90" style="border-radius:50%;">
-    <h3>Luis Eduardo T.</h3>
-    <p>⭐⭐⭐⭐</p>
-    <p>Buena relación calidad-precio.</p>
-  </div>
+    <!-- 2 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=2" alt="María Fernanda"></div>
+      <h3>María Fernanda G.</h3>
+      <div class="role">Usuario Premium</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review">Atención rápida y amable.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 6 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=6" width="90" style="border-radius:50%;">
-    <h3>Valentina S.</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Encantada con el resultado.</p>
-  </div>
+    <!-- 3 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=3" alt="Carlos Andrés"></div>
+      <h3>Carlos Andrés R.</h3>
+      <div class="role">Cliente recurrente</div>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p class="review">Muy buen producto.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 7 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=7" width="90" style="border-radius:50%;">
-    <h3>Diego Alejandro M.</h3>
-    <p>⭐⭐⭐⭐</p>
-    <p>Cumplió con lo esperado.</p>
-  </div>
+    <!-- 4 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=4" alt="Ana Lucía"></div>
+      <h3>Ana Lucía P.</h3>
+      <div class="role">Top colaborador</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review">Súper profesionales.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 8 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=8" width="90" style="border-radius:50%;">
-    <h3>Laura Jimena C.</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Atención de primera calidad.</p>
-  </div>
+    <!-- 5 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=5" alt="Luis Eduardo"></div>
+      <h3>Luis Eduardo T.</h3>
+      <div class="role">Cliente habitual</div>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p class="review">Buena relación calidad-precio.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 9 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=9" width="90" style="border-radius:50%;">
-    <h3>Jorge Enrique V.</h3>
-    <p>⭐⭐⭐⭐</p>
-    <p>Muy contento con la compra.</p>
-  </div>
+    <!-- 6 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=6" alt="Valentina"></div>
+      <h3>Valentina S.</h3>
+      <div class="role">Embajadora</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review">Encantada con el resultado.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 10 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=10" width="90" style="border-radius:50%;">
-    <h3>Paula Andrea N.</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Excelente experiencia en general.</p>
-  </div>
+    <!-- 7 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=7" alt="Diego Alejandro"></div>
+      <h3>Diego Alejandro M.</h3>
+      <div class="role">Cliente estrella</div>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p class="review">Cumplió con lo esperado.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 11 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=11" width="90" style="border-radius:50%;">
-    <h3>Ricardo Antonio L.</h3>
-    <p>⭐⭐⭐⭐</p>
-    <p>Buen servicio, puntuales.</p>
-  </div>
+    <!-- 8 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=8" alt="Laura Jimena"></div>
+      <h3>Laura Jimena C.</h3>
+      <div class="role">Usuario activo</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review">Atención de primera calidad.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 12 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=12" width="90" style="border-radius:50%;">
-    <h3>Daniela Estefanía R.</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Me encantó, sin duda recomiendo.</p>
-  </div>
+    <!-- 9 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=9" alt="Jorge Enrique"></div>
+      <h3>Jorge Enrique V.</h3>
+      <div class="role">Cliente fiel</div>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p class="review">Muy contento con la compra.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 13 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=13" width="90" style="border-radius:50%;">
-    <h3>Felipe Andrés P.</h3>
-    <p>⭐⭐⭐⭐</p>
-    <p>Todo bien, solo demora un poco.</p>
-  </div>
+    <!-- 10 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=10" alt="Paula Andrea"></div>
+      <h3>Paula Andrea N.</h3>
+      <div class="role">Colaboradora</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review">Excelente experiencia.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 14 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=14" width="90" style="border-radius:50%;">
-    <h3>Sofía Isabel C.</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Atención impecable y muy claros.</p>
-  </div>
+    <!-- 11 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=11" alt="Ricardo Antonio"></div>
+      <h3>Ricardo Antonio L.</h3>
+      <div class="role">Cliente frecuente</div>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p class="review">Buen servicio, puntuales.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 15 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=15" width="90" style="border-radius:50%;">
-    <h3>Miguel Ángel H.</h3>
-    <p>⭐⭐⭐⭐</p>
-    <p>Buena calidad, justo lo que buscaba.</p>
-  </div>
+    <!-- 12 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=12" alt="Daniela Estefanía"></div>
+      <h3>Daniela Estefanía R.</h3>
+      <div class="role">Usuario Premium</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review">Me encantó, recomiendo.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 16 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=16" width="90" style="border-radius:50%;">
-    <h3>Camila Alejandra G.</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Un servicio de 10, gracias.</p>
-  </div>
+    <!-- 13 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=13" alt="Felipe Andrés"></div>
+      <h3>Felipe Andrés P.</h3>
+      <div class="role">Cliente recurrente</div>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p class="review">Todo bien, solo demora.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 17 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=17" width="90" style="border-radius:50%;">
-    <h3>Andrés Felipe O.</h3>
-    <p>⭐⭐⭐⭐</p>
-    <p>Cumplió con los tiempos.</p>
-  </div>
+    <!-- 14 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=14" alt="Sofía Isabel"></div>
+      <h3>Sofía Isabel C.</h3>
+      <div class="role">Top colaborador</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review">Atención impecable.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 18 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=18" width="90" style="border-radius:50%;">
-    <h3>Natalia Patricia M.</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Muy profesionales y atentos.</p>
-  </div>
+    <!-- 15 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=15" alt="Miguel Ángel"></div>
+      <h3>Miguel Ángel H.</h3>
+      <div class="role">Cliente habitual</div>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p class="review">Buena calidad, justo lo que buscaba.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 19 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=19" width="90" style="border-radius:50%;">
-    <h3>Óscar Eduardo D.</h3>
-    <p>⭐⭐⭐⭐</p>
-    <p>Buen producto, entrega rápida.</p>
-  </div>
+    <!-- 16 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=16" alt="Camila Alejandra"></div>
+      <h3>Camila Alejandra G.</h3>
+      <div class="role">Embajadora</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review">Un servicio de 10.</p>
+      <span class="verified">Verificado</span>
+    </div>
 
-  <!-- Tarjeta 20 -->
-  <div class="card">
-    <img src="https://i.pravatar.cc/150?img=20" width="90" style="border-radius:50%;">
-    <h3>Gabriela Fernanda S.</h3>
-    <p>⭐⭐⭐⭐⭐</p>
-    <p>Excelente servicio, muy recomendable.</p>
+    <!-- 17 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=17" alt="Andrés Felipe"></div>
+      <h3>Andrés Felipe O.</h3>
+      <div class="role">Cliente estrella</div>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p class="review">Cumplió con los tiempos.</p>
+      <span class="verified">Verificado</span>
+    </div>
+
+    <!-- 18 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=18" alt="Natalia Patricia"></div>
+      <h3>Natalia Patricia M.</h3>
+      <div class="role">Usuario activo</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review">Muy profesionales.</p>
+      <span class="verified">Verificado</span>
+    </div>
+
+    <!-- 19 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=19" alt="Óscar Eduardo"></div>
+      <h3>Óscar Eduardo D.</h3>
+      <div class="role">Cliente fiel</div>
+      <div class="stars">⭐⭐⭐⭐</div>
+      <p class="review">Buen producto, entrega rápida.</p>
+      <span class="verified">Verificado</span>
+    </div>
+
+    <!-- 20 -->
+    <div class="card">
+      <div class="avatar-ring"><img src="https://i.pravatar.cc/150?img=20" alt="Gabriela Fernanda"></div>
+      <h3>Gabriela Fernanda S.</h3>
+      <div class="role">Colaboradora</div>
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review">Excelente servicio, recomendable.</p>
+      <span class="verified">Verificado</span>
+    </div>
+
   </div>
 </body>
 </html>
