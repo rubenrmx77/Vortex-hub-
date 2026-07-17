@@ -468,7 +468,34 @@ Entretenimiento digital premium
 function abrirAdmin(){
 
 let usuario = prompt("Usuario administrador:");
+<!-- BOTÓN ADMIN OCULTO -->
+<div style="text-align:center;margin:20px;">
+<button onclick="abrirAdmin()" style="background:none;border:none;font-size:20px;">
+⚙️
+</button>
+</div>
 
+<script>
+function abrirAdmin(){
+
+let usuario = prompt("Usuario administrador:");
+
+if(usuario !== "Admin"){
+alert("Usuario incorrecto");
+return;
+}
+
+let clave = prompt("Contraseña administrador:");
+
+if(clave !== "Vortex2026#"){
+alert("Contraseña incorrecta");
+return;
+}
+
+alert("Bienvenido al panel administrador");
+
+}
+</script>
 alert("Acceso administrador correcto");
 
 }else{
