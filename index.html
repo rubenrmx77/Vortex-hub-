@@ -406,144 +406,85 @@ Entretenimiento digital premium
 <a class="btn" href="https://wa.me/529841157507">Comprar</a>
 </div>
 
-
-</div>
-</div>
-
-
-<section id="clientes" class="container">
-
-<h2 class="titulo">
-⭐ Clientes satisfechos
-</h2>
-
-
-<div class="grid">
-
-<div class="card">
-<h3>Juan Carlos</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Excelente servicio.</p>
-</div>
-
-<div class="card">
-<h3>María López</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Muy recomendado.</p>
-</div>
-
-<div class="card">
-<h3>Carlos Ramírez</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Buena atención.</p>
-</div>
-
-<div class="card">
-<h3>Laura García</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Todo perfecto.</p>
-</div>
-
-<div class="card">
-<h3>Andrés Torres</h3>
-<p>⭐⭐⭐⭐⭐</p>
-<p>Servicio rápido.</p>
-</div>
-
-</div>
-
-</section>
-
+<!-- ACCESO ADMINISTRADOR -->
 
 <section id="admin" class="container">
 
 <h2 class="titulo">
-🔐 
-<!-- Acceso administrador oculto -->
-<a href="#" onclick="abrirAdmin()" style="color:#111;text-decoration:none;">
-⚙️
-</a>
+⚙️ Administración
+</h2>
 
-<script>
-function abrirAdmin(){
+<div class="card">
 
-let usuario = prompt("Usuario administrador:");
-<!-- BOTÓN ADMIN OCULTO -->
-<div style="text-align:center;margin:20px;">
-<button onclick="abrirAdmin()" style="background:none;border:none;font-size:20px;">
-⚙️
+<button onclick="abrirAdmin()" class="btn">
+Ingresar al Panel
 </button>
-</div>
-
-<script>
-function abrirAdmin(){
-
-let usuario = prompt("Usuario administrador:");
-
-if(usuario !== "Admin"){
-alert("Usuario incorrecto");
-return;
-}
-
-let clave = prompt("Contraseña administrador:");
-
-if(clave !== "Vortex2026#"){
-alert("Contraseña incorrecta");
-return;
-}
-
-alert("Bienvenido al panel administrador");
-
-}
-</script>
-alert("Acceso administrador correcto");
-
-}else{
-
-alert("Datos incorrectos");
-
-}
-
-}
-</script>
-<p>
-Panel preparado para futuras mejoras.
-</p>
 
 </div>
 
 </section>
 
 
+<script>
 
-<a class="whatsapp"
-href="https://wa.me/529841157507?text=Hola%20Vortex%20Hub%20Pro,%20quiero%20información"
-target="_blank">
+function abrirAdmin(){
 
-💬
+let usuario = prompt("Usuario administrador:");
 
-</a>
+if(usuario === null) return;
+
+if(usuario.trim() !== "Admin"){
+
+alert("Usuario incorrecto");
+return;
+
+}
+
+let clave = prompt("Contraseña administrador:");
+
+if(clave === null) return;
+
+if(clave.trim() !== "Vortex2026#"){
+
+alert("Contraseña incorrecta");
+return;
+
+}
+
+document.getElementById("panelAdmin").style.display="block";
+
+}
+
+</script>
 
 
+<div id="panelAdmin"
+style="
+display:none;
+background:#111;
+padding:20px;
+margin:20px;
+border-radius:15px;
+border:1px solid #00eaff;
+">
 
-<footer>
-
-<h2>⚡ Vortex Hub Pro</h2>
+<h2 style="color:#00eaff;">
+Panel Administrador
+</h2>
 
 <p>
-📲 WhatsApp: 9841157507
+✅ Acceso correcto
 </p>
 
 <p>
-📧 alartelsistemasproyecta@gmail.com
+Aquí podrás agregar después:
 </p>
 
-<p>
-© 2026 Vortex Hub Pro
-</p>
+<ul>
+<li>Cambiar precios</li>
+<li>Agregar productos</li>
+<li>Editar promociones</li>
+<li>Actualizar servicios</li>
+</ul>
 
-</footer>
-
-
-</body>
-</html>
+</div>
